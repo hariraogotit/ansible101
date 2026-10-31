@@ -10,19 +10,31 @@ build/
 *.ipr
 *.iws
 
-# Kotlin
-*.kotlin_module
-.kotlin/
-
-# Spring / local data
-chroma-data/
-./lucene-index/
-
-# Env / secrets
-*.env
-OPENROUTER_API_KEY
-
-
 # Claude
 .claude/
 
+# Ansible
+.ansible/
+venv/
+env/
+
+# Virtual Python
+*.pyc
+__pycache__/
+
+# Sensitive files
+*.pem
+*.key
+*.pfx
+
+# Ansible Tower/AWX
+tower_config/
+
+# Local configuration overrides
+ansible.cfg.local
+
+# Log files
+*.log
+
+# Retry files
+*.retry
