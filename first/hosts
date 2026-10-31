@@ -1,0 +1,3 @@
+[gcp]
+gcpnode ansible_ssh_common_args='-F /Users/harirao/.ssh/config'
+

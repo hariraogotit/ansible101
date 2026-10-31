@@ -1,0 +1,5 @@
+- name: Task 2 - Create a fresh empty directory
+  ansible.builtin.file:
+    path: ~/my-first-dir-via-ansible
+    state: directory
+    mode: '0755'

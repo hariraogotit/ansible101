@@ -1,0 +1,13 @@
+- name: Task 3 - Create a file using dynamic variables
+  ansible.builtin.copy:
+    dest: ~/my-first-dir-via-ansible/system_info.txt
+    content: |
+      Hello {{ project_owner }}!
+
+      This server is running a completely custom setup:
+      - OS Distribution: {{ ansible_facts['distribution'] }}
+      - OS Version: {{ ansible_facts['distribution_version'] }}
+      - CPU Architecture: {{ ansible_facts['architecture'] }}
+
+      Generated via Ansible on: {{ ansible_facts['date_time']['date'] }}
+    mode: '0644'

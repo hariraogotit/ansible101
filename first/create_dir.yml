@@ -1,0 +1,17 @@
+---
+- name: Highly Modular Directory and File Management
+  hosts: gcpnode
+  gather_facts: true
+
+  vars:
+    project_owner: "Harirao"
+
+  tasks:
+    - name: Run Delete Step
+      ansible.builtin.include_tasks: tasks/delete_dir.yml
+
+    - name: Run Create Folder Step
+      ansible.builtin.include_tasks: tasks/create_dir.yml
+
+    - name: Run Write File Step
+      ansible.builtin.include_tasks: tasks/create_file.yml
