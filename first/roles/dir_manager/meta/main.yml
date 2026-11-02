@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Hari Rao
+  description: Deletes, creates, and populates a target directory with a system-info file.
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Debian
+      versions: ["all"]
+  galaxy_tags:
+    - directory
+    - file
+    - filesystem
+dependencies: []

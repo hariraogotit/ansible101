@@ -9,7 +9,7 @@ ansible101/
 ├── ansible.cfg          # Top-level global configuration file
 └── first/
     ├── hosts            # Inventory tracking GCP node SSH connections
-    ├── create_dir.yml   # Master playbook controller using task inclusions
+    ├── main.yml         # Master playbook controller using task inclusions
     └── tasks/
         ├── delete_dir.yml   # Task 1: Clears target directory (state: absent)
         ├── create_dir.yml   # Task 2: Recreates target directory (state: directory)

@@ -1,4 +1,0 @@
-- name: Task 1 - Delete the directory if it already exists
-  ansible.builtin.file:
-    path: ~/my-first-dir-via-ansible
-    state: absent

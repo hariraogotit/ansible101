@@ -1,0 +1,6 @@
+---
+# Delete the directory if it already exists
+- name: Delete existing directory
+  ansible.builtin.file:
+    path: "{{ dir_manager_target_dir }}"
+    state: absent

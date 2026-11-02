@@ -1,0 +1,7 @@
+---
+# Create a fresh empty directory
+- name: Create directory
+  ansible.builtin.file:
+    path: "{{ dir_manager_target_dir }}"
+    state: directory
+    mode: '0755'

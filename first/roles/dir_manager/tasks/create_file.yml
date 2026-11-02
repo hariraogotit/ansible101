@@ -1,6 +1,8 @@
-- name: Task 3 - Create a file using dynamic variables
+---
+# Create a file using dynamic variables
+- name: Write system info file
   ansible.builtin.copy:
-    dest: ~/my-first-dir-via-ansible/system_info.txt
+    dest: "{{ dir_manager_target_dir }}/system_info.txt"
     content: |
       Hello {{ project_owner }}!
 

@@ -1,0 +1,10 @@
+---
+# Main task list for dir_manager role
+- name: Run Delete Step
+  ansible.builtin.include_tasks: delete_dir.yml
+
+- name: Run Create Folder Step
+  ansible.builtin.include_tasks: create_dir.yml
+
+- name: Run Write File Step
+  ansible.builtin.include_tasks: create_file.yml

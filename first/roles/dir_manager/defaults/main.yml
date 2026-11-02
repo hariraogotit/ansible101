@@ -1,0 +1,4 @@
+---
+# Default variables for dir_manager role
+# These have the lowest priority and can be easily overridden
+dir_manager_target_dir: "~/my-first-dir-via-ansible"
