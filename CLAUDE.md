@@ -9,19 +9,39 @@ ansible101/
 ├── ansible.cfg          # Top-level global configuration file
 └── first/
     ├── hosts            # Inventory tracking GCP node SSH connections
-    ├── main.yml         # Master playbook controller using task inclusions
-    └── tasks/
-        ├── delete_dir.yml   # Task 1: Clears target directory (state: absent)
-        ├── create_dir.yml   # Task 2: Recreates target directory (state: directory)
-        └── create_file.yml  # Task 3: Generates file with dynamic system facts
+    ├── main.yml         # Play-level role declarations (see Roles section below)
+    └── roles/
+        └── dir_manager/
+            ├── defaults/main.yml        # parameterized target directory
+            ├── meta/main.yml            # role metadata + galaxy info
+            └── tasks/
+                ├── main.yml             # entry point (included by play-level roles:)
+                ├── delete_dir.yml        # Task 1: Clears target directory (state: absent)
+                ├── create_dir.yml        # Task 2: Recreates target directory (state: directory)
+                └── create_file.yml       # Task 3: Generates file with dynamic system facts
 ```
 
 ## ✅ What We Accomplished
 1. **Resolved Environment Obstacles:** Bypassed Homebrew compiler errors on Intel macOS by leveraging Python `pipx` to successfully install `ansible-core` alongside all essential dependencies.
 2. **Optimized Authentication:** Set up local Mac SSH config flags (`AddKeysToAgent` and `UseKeychain`) to securely store key passphrases in the Apple Keychain. This allowed Ansible to communicate with GCP seamlessly without blocking background execution.
-3. **Decoupled Architecture:** Refactored a single monolithic playbook into decoupled, individual single-responsibility task files managed via `ansible.builtin.include_tasks`.
+3. **Decoupled Architecture:** Refactored a single monolithic playbook into decoupled, single-responsibility task files managed via play-level `roles:` declarations inside `roles/dir_manager/`.
 4. **Dynamic Data Tracking:** Enabled `gather_facts` to automatically extract target engine configurations (OS, Distribution, and Architecture metrics) and map them dynamically using modern Jinja2 syntax blocks.
 5. **Project-wide Configuration:** Configured a root-level `ansible.cfg` file with documented comments to globally silence interpreter warnings using `auto_silent`.
+
+---
+
+## 🔧 Roles Architecture (dir_manager)
+
+The playbook now uses **play-level roles**, which is the standard Ansible pattern:
+
+- **`first/main.yml`** declares the play with `roles:` — it includes the `dir_manager` role.
+- **`first/roles/dir_manager/`** contains the role structure:
+  - `tasks/main.yml` — entry point that `include_tasks`s the three task files.
+  - `tasks/delete_dir.yml` — Task 1: clears target dir (`state: absent`).
+  - `tasks/create_dir.yml` — Task 2: creates target dir (`state: directory`).
+  - `tasks/create_file.yml` — Task 3: writes file with dynamic system facts (`copy` module).
+
+This uses the play-level `roles:` keyword instead of task-level `include_role`.
 
 ---
 

@@ -6,7 +6,5 @@
   vars:
     project_owner: "Harirao"
 
-  tasks:
-    - name: Run Dir Management
-      ansible.builtin.include_role:
-        name: dir_manager
+  roles:
+    - dir_manager
