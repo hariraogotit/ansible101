@@ -6,9 +6,11 @@ We successfully set up a **highly modular, production-ready Ansible architecture
 ### Current Project Directory Structure
 ```text
 ansible101/
-├── ansible.cfg          # Top-level global configuration file
+├── ansible.cfg          # Top-level global config (auto_silent + inventory path)
+├── environments/
+│   └── dev/
+│       └── hosts        # Inventory tracking GCP node SSH connections
 └── first/
-    ├── hosts            # Inventory tracking GCP node SSH connections
     ├── main.yml         # Play-level role declarations (see Roles section below)
     └── roles/
         └── dir_manager/
