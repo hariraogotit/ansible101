@@ -13,7 +13,6 @@ ansible101/
     └── roles/
         └── dir_manager/
             ├── defaults/main.yml        # parameterized target directory
-            ├── meta/main.yml            # role metadata + galaxy info
             └── tasks/
                 ├── main.yml             # entry point (included by play-level roles:)
                 ├── delete_dir.yml        # Task 1: Clears target directory (state: absent)
